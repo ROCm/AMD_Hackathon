@@ -1,19 +1,24 @@
-# QuickStart to set up the development environment at Edge
+# QuickStart 
 
-## Target Enviroment
+To set up the lerobot development environment for both edge and cloud with AMD ROCm Platform.
 
-AMD Ryzen AI 9 HX370 MiniPC
+## Setup the Edge Development
+
+The edge platform is based on AMD Ryzen AI PC for driving the SO101-ARM for create dataset and inference. The iGPU of the Ryzen AI Processor do accerate the model inference base on ROCm.
+
+### Target Enviroment
+
+AMD Ryzen AI 9 HX370 PC
 OS: ubuntu 24.04
 ROCm v6.3+
 PyTorch v2.7.x
-LeRobot: v0.3.3
+LeRobot: v0.4.0
 
+### Pre-requisites
 
-## Pre-requisites
+#### Set the VRAM size to 16GB+ in BIOS
 
-### Set the VRAM size to 16GB+ in BIOS
-
-The BIOS UI may be different from vendors. You should refer to the User Guide about the BIOS setting of which MiniPC you use. 
+The BIOS UI may be different from vendors. You should refer to the User Guide about the BIOS setting of which PC you use. 
 
 Here are two examples for reference,
 
@@ -21,7 +26,7 @@ Enter the BIOS Setup => Advanced => GFX Configuration => UMA Frame buffer Size =
 
 Enter the BIOS Setup => Advanced => AMD CBS => NBIO Common Options => GFX Configuration => Dedicated Graphics Memory => 16GB
 
-### Install Ubuntu 24.04 LTS on the AMD Ryzen AI MiniPC
+#### Install Ubuntu 24.04 LTS on the AMD Ryzen AI PC
 
 ```shell
 alex@SER9:~$ lsb_release -a
@@ -49,13 +54,13 @@ gpu_sched              61440  2 amdxdna,amdgpu
 video                  77824  1 amdgpu
 ```
 
-## Setup the ROCm Development Environment for the LeRobot
+### Setup the ROCm Development Environment for the LeRobot
 
 At now [2025/10],  LeRobot depends on PyTorch version >=2.2.1, <2.8.0 (see `pyproject.toml` )
 
 So that we recommend using ROCm 6.3 and PyTorch 2.7 combination to make compatible with LeRobot.
 
-### Install ROCm 6.3.x,
+#### Install ROCm 6.3.x,
 
 ``` shell
 sudo apt update
@@ -75,7 +80,7 @@ sudo reboot
 
 You could get more details from https://rocm.docs.amd.com/projects/radeon-ryzen/en/docs-6.3.4/docs/install/native_linux/install-radeon.html
 
-### Install PyTorch with ROCm
+#### Install PyTorch with ROCm
 
 To repeat
 At now [2025/10],  LeRobot depends on PyTorch version >=2.2.1, <2.8.0 (see `pyproject.toml` )
@@ -121,7 +126,7 @@ python3 -c "import torch; print(f'device name [0]:', torch.cuda.get_device_name(
 It will get ` device name [0]: AMD Radeon Graphics`.
 
 
-### Setup LeRobot development Environment
+#### Setup LeRobot development Environment
 
 Follow the Installation in https://github.com/huggingface/lerobot/blob/main/README.md  
 
