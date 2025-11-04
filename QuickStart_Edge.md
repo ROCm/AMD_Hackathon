@@ -150,6 +150,6 @@ Install the feetech-servo-sdk for SO-ARM101 in this Hackation.
 pip install 'lerobot[feetech]'      # Feetech motor support
 ```
 
-The base development for the edge is ready. You could refer to https://huggingface.co/docs/lerobot/index to get start your hackathon challenge with LeRobot. 
+The edge development environment is ready. Refer to https://huggingface.co/docs/lerobot/index to get start the hackathon challenge with LeRobot. 
 
 Good Luck~
