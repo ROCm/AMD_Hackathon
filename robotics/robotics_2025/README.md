@@ -4,7 +4,7 @@
 
    [QuickStart.md](QuickStart.md)
   
-2. Request a training environment with a single AMD MI300X GPU by clicking [here](). The process will take a few minutes to provision the GPU instance and open a [Jupyter Notebook](training-models-on-rocm.ipynb) for environment configuration and model training.  
+2. Request a training environment with a single AMD MI300X GPU by clicking [here]().(will be enabled during the Hackathon) The process will take a few minutes to provision the GPU instance and open a [Jupyter Notebook](training-models-on-rocm.ipynb) for environment configuration and model training.  
 
 3. Template of the GitHub Repo for Challenger to commit their work
 
