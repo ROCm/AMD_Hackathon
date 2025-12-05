@@ -19,4 +19,18 @@ Please do the item ahead to join the Hackathon in field. That would save your ti
 
     A: Connect the cameras with different USB port/hub with the PC (laptop) for smooth video capture.
 
+3. How to fast download files(datasets, models, wandb) from the Cloud VM?
+
+    A: please use tar the files which you want to download first in terminal of Jupyter Notebook and then download it.
+    The example tar command,
+    
+    ```shell
+    tar cjvf your_model.tar.bz2 your_model
+    ```
+
+    
+
+4. 
+
+
 
