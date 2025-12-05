@@ -11,9 +11,11 @@ Please do the item ahead to join the Hackathon in field. That would save your ti
 # FAQ
 
 1. How to get support for LeRobot with AI?
+
 A: Recommend to chat with deepwiki for using LeRobot by https://deepwiki.com/huggingface/lerobot or other LLM tools you want.
 
 2. If the video captuer is not stable (shaking)?
+
 A: Connect the cameras with different USB port/hub with the PC (laptop) for smooth video capture.
 
 
