@@ -105,20 +105,20 @@ The example command from the Hugging Face tutorial [here](https://huggingface.co
 
 Here is the login procedure copied from the Hugging Face tutorial:
 
-```text
-Once you're familiar with teleoperation, you can record your first dataset.
+> Once you're familiar with teleoperation, you can record your first dataset.
+>
+> We use the Hugging Face hub features for uploading your dataset. If you haven't previously used the Hub, make sure you can login via the cli using a write-access token. This token can be generated from the Hugging Face settings.
+>
+> Add your token to the CLI by running this command:
+>
+> `$ huggingface-cli login --token ${HUGGINGFACE_TOKEN} --add-to-git-credential`
+>
+> Then store your Hugging Face repository name in a variable:
+>
+> `$ HF_USER=$(hf auth whoami | head -n 1)`
+> 
+> `$ echo $HF_USER`
 
-We use the Hugging Face hub features for uploading your dataset. If you haven't previously used the Hub, make sure you can login via the cli using a write-access token. This token can be generated from the Hugging Face settings.
-
-Add your token to the CLI by running this command:
-
-$ huggingface-cli login --token ${HUGGINGFACE_TOKEN} --add-to-git-credential
-
-Then store your Hugging Face repository name in a variable:
-
-$ HF_USER=$(hf auth whoami | head -n 1)
-$ echo $HF_USER
-```
 
 Dataset uploading can be disabled by `--dataset.push_to_hub=False`.
 
