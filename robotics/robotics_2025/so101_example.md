@@ -152,6 +152,11 @@ You can use `Ctrl-c` to stop the recording. Use `--resume=true` in the command t
 
 After the recording is done, you can use the dataset for training.
 
+If you want to use the arrow keys to control the recording session, you may need to change your `pynput` version. There is a bug in some versions.
+```shell
+pip uninstall pynput && pip install pynput==1.7.7
+```
+
 ## Training
 
 Refer to the [QuickStart.md](QuickStart.md) to do the training with MI300X on AMD Development Cloud
