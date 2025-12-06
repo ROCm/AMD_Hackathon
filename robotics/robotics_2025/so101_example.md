@@ -103,6 +103,26 @@ We will use the leader ARM to teleoperate the follower ARM to perform the action
 
 Follow the instructions here to record, format, and automatically upload the data to Hugging Face: https://huggingface.co/docs/lerobot/il_robots#record-a-dataset
 
+Here's an example command once you have setup your Hugging Face credentials:
+
+```shell
+lerobot-record \
+    --robot.type=so101_follower \
+    --robot.port=/dev/ttyACM1 \
+    --robot.id=my_awesome_follower_arm \
+    --robot.cameras="{top: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30}, side: {type: opencv, index_or_path: 2, width: 640, height: 480, fps: 30}}" \
+    --teleop.type=so101_leader \
+    --teleop.port=/dev/ttyACM0 \
+    --teleop.id=my_awesome_leader_arm \
+    --display_data=true \
+    --dataset.repo_id=${HF_USER}/record-test \
+    --dataset.num_episodes=60 \
+    --dataset.episode_time_s=20 \
+    --dataset.reset_time_s=10 \
+    --dataset.single_task="pickup the cube and place it to the bin" \
+    --dataset.root=${HOME}/so101_dataset/
+```
+
 - `--dataset.num_episodes=60` means we will record 60 teleoperation sessions.
 - `--dataset.episode_time_s=20` means each episode has 20 seconds; this depends on whether it is enough time for your actions.
 - `--dataset.reset_time_s=10` means the reset time between episodes. You may use this time slot to reset your environment, like recovering the position of the cube to the source by hand and waiting to start the next episode recording.
