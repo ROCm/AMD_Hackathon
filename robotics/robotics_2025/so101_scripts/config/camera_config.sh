@@ -31,13 +31,22 @@ export ARM_CAMERA_FORMAT="${ARM_CAMERA_FORMAT:-MJPG}"
 # Buffer size for arm camera (helps with frame drops)
 export ARM_CAMERA_BUFFER_SIZE="${ARM_CAMERA_BUFFER_SIZE:-4}"
 
-# Build camera configuration string for LeRobot
-# This is consumed by lerobot-teleoperate / lerobot-record
-# and now includes top, side, and arm-mounted cameras.
-# Top/side use CAMERA_FPS, arm camera uses ARM_CAMERA_FPS.
-export CAMERA_CONFIG="{top: {type: opencv, index_or_path: ${TOP_CAMERA_INDEX}, width: ${CAMERA_WIDTH}, height: ${CAMERA_HEIGHT}, fps: ${CAMERA_FPS}}, side: {type: opencv, index_or_path: ${SIDE_CAMERA_INDEX}, width: ${CAMERA_WIDTH}, height: ${CAMERA_HEIGHT}, fps: ${CAMERA_FPS}}, arm: {type: opencv, index_or_path: ${ARM_CAMERA_INDEX}, width: ${CAMERA_WIDTH}, height: ${CAMERA_HEIGHT}, fps: ${ARM_CAMERA_FPS}}}"
-
 # Camera device paths
 export TOP_CAMERA_DEVICE="/dev/video${TOP_CAMERA_INDEX}"
 export SIDE_CAMERA_DEVICE="/dev/video${SIDE_CAMERA_INDEX}"
 export ARM_CAMERA_DEVICE="/dev/video${ARM_CAMERA_INDEX}"
+
+# Optional: disable side camera if it's flaky or unavailable
+# Set DISABLE_SIDE_CAMERA=true in .env to ignore /dev/video${SIDE_CAMERA_INDEX}
+export DISABLE_SIDE_CAMERA="${DISABLE_SIDE_CAMERA:-false}"
+
+# Build camera configuration string for LeRobot
+# This is consumed by lerobot-teleoperate / lerobot-record.
+# Top/side use CAMERA_FPS, arm camera uses ARM_CAMERA_FPS.
+if [ "${DISABLE_SIDE_CAMERA}" = "true" ]; then
+    # Only top + arm cameras
+    export CAMERA_CONFIG="{top: {type: opencv, index_or_path: ${TOP_CAMERA_INDEX}, width: ${CAMERA_WIDTH}, height: ${CAMERA_HEIGHT}, fps: ${CAMERA_FPS}}, arm: {type: opencv, index_or_path: ${ARM_CAMERA_INDEX}, width: ${CAMERA_WIDTH}, height: ${CAMERA_HEIGHT}, fps: ${ARM_CAMERA_FPS}}}"
+else
+    # Top + side + arm cameras
+    export CAMERA_CONFIG="{top: {type: opencv, index_or_path: ${TOP_CAMERA_INDEX}, width: ${CAMERA_WIDTH}, height: ${CAMERA_HEIGHT}, fps: ${CAMERA_FPS}}, side: {type: opencv, index_or_path: ${SIDE_CAMERA_INDEX}, width: ${CAMERA_WIDTH}, height: ${CAMERA_HEIGHT}, fps: ${CAMERA_FPS}}, arm: {type: opencv, index_or_path: ${ARM_CAMERA_INDEX}, width: ${CAMERA_WIDTH}, height: ${CAMERA_HEIGHT}, fps: ${ARM_CAMERA_FPS}}}"
+fi

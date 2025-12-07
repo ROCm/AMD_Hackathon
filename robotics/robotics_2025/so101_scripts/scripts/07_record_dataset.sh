@@ -103,13 +103,35 @@ log "  Episodes: $DATASET_NUM_EPISODES"
 log "  Episode duration: ${DATASET_EPISODE_TIME}s"
 log "  Reset time: ${DATASET_RESET_TIME}s"
 log "  Repository: $DATASET_REPO_ID"
+
+# Compute effective dataset root to avoid collisions and FileExistsError
+BASE_ROOT="${HOME}/so101_datasets"
+EFFECTIVE_DATASET_ROOT="${DATASET_ROOT}"
+
+# If user pointed to the base root, scope it by dataset name
+if [ "${EFFECTIVE_DATASET_ROOT}" = "${BASE_ROOT}" ]; then
+    EFFECTIVE_DATASET_ROOT="${BASE_ROOT}/${DATASET_NAME}"
+fi
+
+# If that directory already exists, append a version suffix _vN
+if [ -d "${EFFECTIVE_DATASET_ROOT}" ]; then
+    i=1
+    while [ -d "${EFFECTIVE_DATASET_ROOT}_v${i}" ]; do
+        i=$((i + 1))
+    done
+    EFFECTIVE_DATASET_ROOT="${EFFECTIVE_DATASET_ROOT}_v${i}"
+fi
+
+# Export back so downstream scripts (and logs) see the final root
+export DATASET_ROOT="${EFFECTIVE_DATASET_ROOT}"
 log "  Local storage: $DATASET_ROOT"
 echo ""
 
-# Create dataset directory
-mkdir -p "$DATASET_ROOT"
-log_success "Dataset directory ready: $DATASET_ROOT"
-echo ""
+# NOTE:
+# Do NOT create $DATASET_ROOT here.
+# LeRobot's LeRobotDatasetMetadata.create() expects the root directory
+# to NOT exist and will create it itself with exist_ok=False.
+# Pre-creating it here causes the FileExistsError you were seeing.
 
 # Display instructions
 log_info "Recording Instructions:"
