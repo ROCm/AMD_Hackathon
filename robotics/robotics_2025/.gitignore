@@ -83,3 +83,7 @@ Thumbs.db
 
 # ROCm/GPU specific
 *.rocm_smi_log
+
+# Environment and local config (do NOT commit secrets)
+so101_scripts/.env
+so101_scripts/logs/
