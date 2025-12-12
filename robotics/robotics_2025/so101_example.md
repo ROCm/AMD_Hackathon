@@ -57,6 +57,8 @@ lerobot-calibrate \
     --robot.id=my_awesome_follower_arm # <- Give the robot a unique name
 ```
 
+> If you see a `Lock` error, you may need to unplug and replug the power to the arm.
+
 Calibrate the leader:
 
 ```shell
