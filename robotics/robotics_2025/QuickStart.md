@@ -56,7 +56,7 @@ So that we recommend using ROCm 6.3 and PyTorch 2.7 combination to make compatib
 
 ``` shell
 sudo apt update
-sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
+sudo apt install "linux-headers-$(uname -r)"
 sudo apt install python3-setuptools python3-wheel
 sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
 
