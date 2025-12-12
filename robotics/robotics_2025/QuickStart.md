@@ -18,20 +18,6 @@ LeRobot: v0.4.1
 
 ### Pre-requisites
 
-#### Set the VRAM size to 16GB+ in BIOS
-
-The BIOS UI may be different from vendors. You should refer to the User Guide about the BIOS setting of which PC you use. 
-
-Here are two examples for reference,
-
-```
-Enter the BIOS Setup => Advanced => GFX Configuration => UMA Frame buffer Size => 16GB
-```
-
-```
-Enter the BIOS Setup => Advanced => AMD CBS => NBIO Common Options => GFX Configuration => Dedicated Graphics Memory => 16GB
-```
-
 #### Install Ubuntu 24.04 LTS on the AMD Ryzen AI PC
 
 ```shell
