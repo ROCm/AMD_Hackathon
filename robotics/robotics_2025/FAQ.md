@@ -29,6 +29,7 @@ Please do the item ahead to join the Hackathon in field. That would save your ti
     ```
 
 4. Why do I get error like `Runtime Error: Could not push packet to decoder: Invalid data found when processing input` during `lerobot-train`?    
+
    A: It indicates that one of the video files in your dataset is corrupted.  The command `ffmpeg -v error -i file-000.mp4 -f null -` is a diagnostic command used to check a video file for corruption.    
     Here is the breakdown of each part:    
     - `ffmpeg`: The command-line tool for processing video and audio.
@@ -38,6 +39,10 @@ Please do the item ahead to join the Hackathon in field. That would save your ti
     - `-`: Specifies the output destination as standard output (stdout). Combined with -f null, this effectively sends the decoded data to "nowhere" (/dev/null).    
     **In summary**: It forces your computer to decode every single frame of the video but throw away the result. If any frame is broken, ffmpeg will scream about it in the terminal. If the terminal stays silent, the video is valid.    
     The most common root cause for video corruption in datasets is **Interrupted Recording/Writing**. The recording process (the robot collection script) was killed (SIGINT/Ctrl+C) or crashed while it was writing the video file.
+
+6. How to edit your dataset of lerobot?
+
+   A: Going to [using dataset tools](https://huggingface.co/docs/lerobot/using_dataset_tools)
 
 
 
