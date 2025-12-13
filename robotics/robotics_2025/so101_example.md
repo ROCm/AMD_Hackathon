@@ -153,11 +153,16 @@ To get more detials about the instructions of record from `https://huggingface.c
 
 After the recording is done, you can use the dataset for training.
 
+### Keyboard controls on Ubuntu
+
 If you want to use the arrow keys to control the recording session, you may need to change your `pynput` version and GUI settings due to a bug with Ubuntu.
+
+First, install the specific `pynput` version:
 ```shell
 pip uninstall pynput && pip install pynput==1.7.7
 ```
-To change the Ubuntu GUI settings, logout of your laptop and in the login screen, there should be a setting button where you can change it to `Ubuntu with Xorg`.
+
+Then, change the Ubuntu GUI settings by logging out of your laptop and, in the login screen, click the setting button and select `Ubuntu with Xorg`.
 <img width="968" height="774" alt="image" src="https://github.com/user-attachments/assets/bf3c5262-e75f-45e2-8896-513cf9aca0fa" />
 
 
