@@ -112,7 +112,7 @@ We use the Hugging Face hub features for uploading your dataset. If you haven’
 Add your token to the CLI by running this command:
 
 ```shell
-huggingface-cli login --token ${HUGGINGFACE_TOKEN} --add-to-git-credential
+hf auth login --token ${HUGGINGFACE_TOKEN} --add-to-git-credential
 ```
 
 Then store your Hugging Face repository name in a variable:
