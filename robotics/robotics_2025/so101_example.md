@@ -109,10 +109,10 @@ We will use the leader ARM to teleoperate the follower ARM to perform the action
 
 We use the Hugging Face hub features for uploading your dataset. If you haven’t previously used the Hub, make sure you can login via the cli using a write-access token, this token can be generated from the Hugging Face settings.
 
-Add your token to the CLI by running this command:
+Add your token to the CLI and login to Hugging Face by running this command:
 
 ```shell
-hf auth login --token ${HUGGINGFACE_TOKEN} --add-to-git-credential
+hf auth login
 ```
 
 Then store your Hugging Face repository name in a variable:
