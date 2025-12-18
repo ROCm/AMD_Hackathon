@@ -49,8 +49,7 @@ sudo chmod 666 /dev/ttyACM1
 ```
 
 Calibrate the follower:
->`robot.port` is the port of your follower arm
->`robot.id` is a unique name for the follower
+>`robot.port` is the port of your follower arm, `robot.id` is a unique name for the follower
 
 ```shell
 lerobot-calibrate \
@@ -62,8 +61,7 @@ lerobot-calibrate \
 > If you see a `Lock` error, you may need to unplug and replug the power to the arm.
 
 Calibrate the leader:
->`teleop.port` is port of your leader arm
->`teleop.id` is a unique name for the leader
+>`teleop.port` is port of your leader arm, `teleop.id` is a unique name for the leader
 
 ```shell
 lerobot-calibrate \
