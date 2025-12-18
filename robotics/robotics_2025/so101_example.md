@@ -49,23 +49,27 @@ sudo chmod 666 /dev/ttyACM1
 ```
 
 Calibrate the follower:
+>`robot.port` is the port of your follower arm
+>`robot.id` is a unique name for the follower
 
 ```shell
 lerobot-calibrate \
     --robot.type=so101_follower \
-    --robot.port=/dev/ttyACM1 \ # <- The port of your robot
-    --robot.id=my_awesome_follower_arm # <- Give the robot a unique name
+    --robot.port=/dev/ttyACM1 \
+    --robot.id=my_awesome_follower_arm
 ```
 
 > If you see a `Lock` error, you may need to unplug and replug the power to the arm.
 
 Calibrate the leader:
+>`teleop.port` is port of your leader arm
+>`teleop.id` is a unique name for the leader
 
 ```shell
 lerobot-calibrate \
     --teleop.type=so101_leader \
-    --teleop.port=/dev/ttyACM0 \ # <- The port of your robot
-    --teleop.id=my_awesome_leader_arm # <- Give the robot a unique name
+    --teleop.port=/dev/ttyACM0 \
+    --teleop.id=my_awesome_leader_arm
 ```
 
 Then you can use the SO101 ARM 
