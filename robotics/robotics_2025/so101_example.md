@@ -117,7 +117,7 @@ hf auth login
 Then store your Hugging Face repository name in a variable:
 
 ```shell
-HF_USER=$(hf auth whoami | head -n 1)
+HF_USER=$(hf auth whoami | cut -c 16-)
 echo $HF_USER
 ```
 
