@@ -175,6 +175,26 @@ Refer to the [QuickStart.md](QuickStart.md) to do the training with MI300X on AM
 
 The checkpoints are generated in `./outputs/train/act_so101_test/checkpoints/` and the last one is `./outputs/train/act_so101_test/checkpoints/last/pretrained_model/`
 
+The save_freq parameter specifies the number of training iterations between checkpoint saves. A checkpoint is saved every save_freq training iterations and after the last training step.
+
+e.g.
+
+```shell
+lerobot-train \
+  --dataset.repo_id=ichbinblau/so101_stack2cubes_dataset \
+  --batch_size=64 \
+  --steps=20000 \
+  --save_freq=5000 \
+  --output_dir=outputs/train/act_so101_3cube_1ksteps \
+  --job_name=act_so101_3cube_1ksteps \
+  --policy.repo_id=ichbinblau/so101_act_stack2cubes \
+  --policy.device=cuda \
+  --policy.type=act \
+  --policy.push_to_hub=true \
+  --wandb.enable=true
+```
+
+
 ## Inference Evaluation
 
 Copy the `pretrained_model` under `./outputs/train/act_so101_test/` from cloud back to the Edge platform (PC) for inference evaluation.
