@@ -1,30 +1,31 @@
-# Example Commands to Operate SO101 ARM
+# Example Commands to Operate SO-101
 
 Suppose:
 1. You have set up the Ubuntu + ROCm + PyTorch + LeRobot development environment by following [QuickStart.md](QuickStart.md).
-2. You have the SO101 ARM assembled.
+2. You have the SO-101 arms assembled.
     1. The leader is the arm with the handle that you control.
     2. The follower is the arm with the pincher and camera.
 
-Here are some key steps with example commands to use the SO101 ARM.
+Here are some key steps with example commands to use the SO-101.
 
 These examples are based on [LeRobot Tutorial](https://huggingface.co/docs/lerobot/so101) and LeRobot v0.4.1 with some modifications and comments for our setup. YOU MAY NEED TO MAKE SOME MODIFICATIONS FOR YOUR JOBS AS REQUIRED.
 
-## Connect the SO101 ARM
-1. Connect the leader ARM with USB UART to PC first and it will get `/dev/ttyACM0` on Ubuntu
-2. Connect the follower ARM with USB UART to PC and it will get `/dev/ttyACM1` on Ubuntu
+## Connect the SO-101 arms
+1. Connect the leader arm with USB UART to PC first and it will get `/dev/ttyACM0` on Ubuntu
+2. Connect the follower arm with USB UART to PC and it will get `/dev/ttyACM1` on Ubuntu
 
-The sequence of the connection of leader ARM and follower ARM will result in different device node names. The following steps assume the following names:
-- Leader ARM: /dev/ttyACM0
-- Follower ARM: /dev/ttyACM1
+The sequence of the connection of leader arm and follower arm will result in different device node names. The following steps assume the following names:
+- Leader arm: /dev/ttyACM0
+- Follower arm: /dev/ttyACM1
 
-LeRobot provides the command `lerobot-find-port` to help find the UART device node of the SO101 ARM.
+LeRobot provides the command `lerobot-find-port` to help find the UART device node of the SO-101 arms.
 
 ## Connect the Cameras
-Suppose you have two cameras, one named `top` and another named `side`. The `top` camera may be set up to give a bird's eye view of the ARM's workspace. The `side` camera may be set up to give a side view.
+Suppose you have two cameras, one named `top` and another named `side`. The `top` camera may be set up to give a bird's eye view of the arm's workspace. The `side` camera may be set up to give a side view.
 
-1. Please connect the `top` camera first and it will get `/dev/video0` for it.
-2. Then connect the `side` camera and it will get `/dev/video2` for it.
+The sequence of the connection of the cameras will result in different device node names. The following steps assume the following names:
+- Top camera: `/dev/video0`
+- Side camera: `/dev/video2`
 
 Use the lerobot-find-cameras CLI tool to detect available cameras:
 
@@ -32,13 +33,13 @@ Use the lerobot-find-cameras CLI tool to detect available cameras:
 lerobot-find-cameras opencv      # Find OpenCV cameras  
 ```
 
-You can also use `ffplay` to check the camera angles:
+You can also use `ffplay` to check the camera angles and which port each camera is connected to:
 ```shell
 ffplay /dev/video*    # Fill in with the camera's index/port
 ```
 
 
-## Calibrate the SO101 ARM
+## Calibrate the SO-101 arms
 
 Details about the steps can be found at https://huggingface.co/docs/lerobot/so101 (you should NOT do the motor ID setup).
 
@@ -70,7 +71,7 @@ lerobot-calibrate \
     --teleop.id=my_awesome_leader_arm
 ```
 
-Then you can use the SO101 ARM 
+Then you can use the SO-101! 
 
 ## Teleoperate
 
@@ -103,7 +104,7 @@ lerobot-teleoperate \
 
 ## Record the dataset
 
-We will use the leader ARM to teleoperate the follower ARM to perform the actions we want to record into the dataset.
+We will use the leader arm to teleoperate the follower arm to perform the actions we want to record into the dataset.
 
 We use the Hugging Face hub features for uploading your dataset. If you haven’t previously used the Hub, make sure you can login via the cli using a write-access token, this token can be generated from the Hugging Face settings.
 
